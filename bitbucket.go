@@ -30,6 +30,7 @@ type pullrequests interface {
 	Activities(opt PullRequestsOptions) (interface{}, error)
 	Activity(opt PullRequestsOptions) (interface{}, error)
 	Commits(opt PullRequestsOptions) (interface{}, error)
+	PostComment(opt PullRequestsCommentOptions) (interface{}, error)
 	Patch(opt PullRequestsOptions) (interface{}, error)
 	Diff(opt PullRequestsOptions) (interface{}, error)
 	Merge(opt PullRequestsOptions) (interface{}, error)
@@ -146,6 +147,13 @@ type PullRequestsOptions struct {
 	States            []string `json:"states"`
 	Query             string   `json:"query"`
 	Sort              string   `json:"sort"`
+}
+
+type PullRequestsCommentOptions struct {
+	Owner         string
+	RepoSlug      string
+	PullRequestID string
+	RawText       string
 }
 
 type CommitsOptions struct {
